@@ -1,4 +1,4 @@
-export default function Cart({detail}) {
+export default function Cart({cartset,totalPrice}) {
     
     return (
         <div className="table-container">
@@ -12,8 +12,8 @@ export default function Cart({detail}) {
 
                 </thead>
                 
-                {/* {
-                    detail.map(item=>
+                {
+                    cartset.map(item=>
                         <tbody>
                          <td>{item.name}</td>
                          <td>{item.quantity}</td>
@@ -21,10 +21,10 @@ export default function Cart({detail}) {
                         </tbody>
                     )
                     
-                } */}
+                }
                 <tr>
                     <td >Grand Total : </td>
-                    <td colSpan={2}>Grand Total</td>
+                    <td colSpan={2}>{totalPrice}</td>
                 </tr>
             </table>
            
