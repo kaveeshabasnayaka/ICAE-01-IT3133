@@ -9,16 +9,11 @@ export default function Product({detail}){
 
 
     const addToCart = () =>{
+        const totalPrice = `${detail.price}`*quantity;
        console.log(quantity)
     }
 
-    const getInput = (e) =>{
-        const {name,value} = e.target;
-        setQuantity((prev)=>({
-            ...prev,
-            [name]:value
-        }))
-    }
+    
 
 
     
@@ -35,7 +30,7 @@ export default function Product({detail}){
                     <h5 class="card-title">Price:{detail.price}</h5>
                     <div class="quantity-container">
                         <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" onChange={getInput}/>
+                        <input type="number" id="quantity" name="quantity" onChange={(e)=>{setQuantity(e.target.value)}}/>
                     </div>
                     <button class="card-button" onClick={addToCart}>Add to Cart</button>
                 </div>
