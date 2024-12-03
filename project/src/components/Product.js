@@ -9,11 +9,10 @@ export default function Product({detail}){
 
 
     const addToCart = () =>{
-        const totalPrice = `${detail.price}`*quantity;
-       console.log(quantity)
+         totalCart(detail,quantity);
+        
+       
     }
-
-    
 
 
     

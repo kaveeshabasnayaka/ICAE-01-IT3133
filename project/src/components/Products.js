@@ -3,8 +3,12 @@ import '../assets/CSS/layout.css';
 import Product from './Product';
 import Cart from './Cart';
 import {flowers as flowersdb} from './FlowerDB';
+import { useState } from 'react';
 
 export default function Products(){
+
+    const[cartset,setCartSet]=useState([]);
+    const[totalPrice,setTotalPrice]=useState(0);
    
     return(
         <>
@@ -16,7 +20,7 @@ export default function Products(){
                 <div className="grid-container">
                     {
                         //product
-                        flowersdb.map((item)=> <Product detail={item} /> )
+                        flowersdb.map((item)=> <Product detail={item} setCartSet={setCartSet} setTotalPrice={setTotalPrice} totalPrice={totalPrice}/> )
                     }
                 </div>
 
@@ -24,7 +28,7 @@ export default function Products(){
             <div className="item3">
                 {
                 //cart
-                <Cart/>
+                <Cart cartset={cartset} totalPrice={totalPrice}/>
                 }
             </div>
         </>
