@@ -1,18 +1,39 @@
 import '../assets/CSS/layout.css';
-export default function Product(){
+import {useState} from 'react';
+
+
+export default function Product({flowersdb}){
+
+    let [quantity,setQuantity] = useState(0);
+
+    const addToCart = () =>{
+       console.log(quantity)
+    }
+
+    const getInput = (e) =>{
+        const {name,value} = e.target;
+        setQuantity((prev)=>({
+            ...prev,
+            [name]:value
+        }))
+    }
     
     return(
         <div className="grid-item">
 
             <div class="card">
-                <img  />
+                <img 
+                className="card img" 
+                src={require(`../assets/image/${flowersdb[0].img}`)} 
+                alt="pic" 
+                />
                 <div class="card-body">
-                    <h5 class="card-title">Price:</h5>
+                    <h5 class="card-title">Price:{flowersdb[0].price}</h5>
                     <div class="quantity-container">
                         <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" />
+                        <input type="number" id="quantity" name="quantity" onChange={getInput}/>
                     </div>
-                    <button class="card-button">Add to Cart</button>
+                    <button class="card-button" onClick={addToCart}>Add to Cart</button>
                 </div>
             </div>
         </div>
