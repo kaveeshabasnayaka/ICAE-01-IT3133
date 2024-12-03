@@ -16,7 +16,7 @@ export default function Products(){
                 <div className="grid-container">
                     {
                         //product
-                        <Product flowersdb={flowersdb}/>
+                        flowersdb.map((item)=> <Product detail={item} /> )
                     }
                 </div>
 
