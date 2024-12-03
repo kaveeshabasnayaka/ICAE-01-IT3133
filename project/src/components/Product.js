@@ -2,17 +2,24 @@ import '../assets/CSS/layout.css';
 import {useState} from 'react';
 
 
-export default function Product({detail}){
+export default function Product({detail,setCartSet,setTotalPrice,totalPrice}){
 
 
-    let [quantity,setQuantity] = useState(0);
+    const [quantity,setQuantity] = useState(0);
 
-
-    const addToCart = () =>{
-         totalCart(detail,quantity);
-        
-       
+    
+    const addToCart=()=>{
+        if(quantity>0){
+            const item={
+                name:detail.name,
+                quantity:quantity,
+                price:detail.price*quantity,
+            }
+            setTotalPrice(totalPrice+item.price)
+            setCartSet((prev)=>([...prev,item]));
+        }
     }
+
 
 
     
